@@ -2,16 +2,9 @@ div(ng-include='"components/navbar/navbar.html"')
 .container
   .row
     .col-sm-12
-      h1 Login
+      h1 ログインして注文を管理しましょう
       p
-        | Accounts are reset on server restart from
-        code server/config/seed.js
-        | . Default account is
-        code test@test.com
-        | /
-        code test
-      p
-        | Admin account is
+        | サンプルアカウントこちら
         code admin@admin.com
         | /
         code admin
@@ -32,9 +25,9 @@ div(ng-include='"components/navbar/navbar.html"')
 
         div
           button.btn.btn-inverse.btn-lg.btn-login(type='submit')
-            | Login
+            | ログイン
           = ' '
-          a.btn.btn-default.btn-lg.btn-register(href='/signup')
+          //a.btn.btn-default.btn-lg.btn-register(href='/signup')
             | Register
 
         hr

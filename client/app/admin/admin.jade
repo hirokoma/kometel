@@ -1,11 +1,48 @@
 div(ng-include='"components/navbar/navbar.html"')
 .container
-  p
-    | The delete user and user index api routes are restricted to users with the 'admin' role.
-  ul.list-group
-    li.list-group-item(ng-repeat='user in users')
-      strong {{user.name}}
-      br
-      span.text-muted {{user.email}}
-      a.trash(ng-click='delete(user)')
-        span.glyphicon.glyphicon-trash.pull-right
+  h1.page-header 最近の注文:
+  table.table.table-striped.table-condensed
+    thead
+      tr
+        th #
+        th お名前
+        th 電話番号
+        th ご住所
+        th 商品名
+        th 個数
+        th 値段
+        th 日付
+        th 状態
+        th 削除
+    tbody
+      tr(ng-repeat = 'order in orders')
+        td {{$index}}
+        td {{order.user.name}}
+        td {{order.user.phone}}
+        td {{order.user.address}}
+        td {{order.item.name}}
+        td {{order.quantity}}
+        td &yen; {{order.item.price * order.quantity}}
+        td '15/4/10
+        td
+          button.btn.btn-sm(ng-class="buttonOf(order.state)") {{order.state}}
+        td
+          i.fa.fa-trash.fa-lg.fa-fw.trash(ng-click="deleteOrder(order)")
+
+  h1.page-header 登録済み顧客:
+  table.table.table-striped.table-condensed
+    thead
+      tr
+        th #
+        th お名前
+        th 電話番号
+        th ご住所
+        th 削除
+    tbody
+      tr(ng-repeat = 'user in users')
+        td {{$index}}
+        td {{user.name}}
+        td {{user.phone}}
+        td {{user.address}}
+        td
+          i.fa.fa-trash.fa-lg.fa-fw.trash(ng-click="deleteUser(user)")
